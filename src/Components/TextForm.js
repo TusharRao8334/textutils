@@ -31,7 +31,7 @@ export default function TextForm(props) {
                 <h4>{props.heading}</h4>
                 <div className="mb-3">
                     <label htmlFor="myBox" className="form-label"></label>
-                    <textarea className="form-control" value={text} onChange={handleOnChange} id="myBox" rows="8" placeholder="Enter Your Text here to opearte.......!"></textarea>
+                    <textarea className="form-control" value={text} onChange={handleOnChange} style={{ backgroundColor: props.mode === 'dark' ? '#011c30' : 'white', color: props.mode === 'dark' ? 'white' : '#011c30' }} id="myBox" rows="8" placeholder="Enter Your Text here to opearte.......!"></textarea>
                 </div>
                 <button className="btn btn-primary btn-sm mx-1" onClick={convertuppercase}>Convert to UpperCase</button>
                 <button className="btn btn-success btn-sm mx-1" onClick={convertlowercase}>Convert to LowerCase</button>
@@ -41,6 +41,7 @@ export default function TextForm(props) {
                 <h5>Text Summery as Follows :</h5>
                 <p>The Above text contain {text.length} characters and {text.split(" ").length} words</p>
                 <p>{0.008 * text.split(" ").length}Minutes to read above text</p>
+                <p>The above entered text has {text.split(/\r\n|\r|\n/).length} lines.</p>
                 <h5>Preview Text</h5>
                 <p>{text}</p>
             </div>
