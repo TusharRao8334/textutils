@@ -1,8 +1,13 @@
 import React, { useState } from 'react'
 import './App.css';
-// import About from './Components/About';
+import About from './Components/About';
 import Navbar from './Components/Navbar';
 import TextForm from './Components/TextForm';
+import {
+  BrowserRouter as Router,
+  Switch,
+  Route
+} from "react-router-dom";
 
 
 
@@ -22,11 +27,19 @@ function App() {
   }
   return (
     <>
-      <Navbar title="Text-utils" mode={mode} switchtheme={switchtheme} />
-      <div className="container my-3">
-        <TextForm heading="Manipulate Your Text Here" mode={mode} />
-        {/* <About /> */}
-      </div>
+      <Router>
+        <Navbar title="Text-utils" mode={mode} switchtheme={switchtheme} />
+        <div className="container my-3">
+          <Switch>
+            <Route exact path="/about">
+              <About />
+            </Route>
+            <Route exact path="/">
+              <TextForm heading="Manipulate Your Text Here" mode={mode} />
+            </Route>
+          </Switch>
+        </div>
+      </Router>
     </>
   );
 }
